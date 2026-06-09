@@ -1,0 +1,2 @@
+# Project Brief
+We are building a Multi-Agent Shopping Assistant using LangGraph. The system orchestrates multiple sub-agents (Policy RAG, Data Lookup, Response Synthesizer) via a Supervisor node. It uses local Chroma DB for vector search and an in-memory dictionary index for JSON mock data lookup. The objective is to provide a seamless assistant capable of handling general policy queries, specific user data lookups, and complex overlapping queries.
