@@ -28,9 +28,9 @@
 - **Technical Design:** `docs/TechDesign-ShoppingAssistant-MVP.md`
 
 ## Roadmap
-- [ ] **Phase 1:** Setup & Data Access (Worker 2)
-- [ ] **Phase 2:** RAG Engine (Worker 1)
-- [ ] **Phase 3:** Prompt Engineering
+- [x] **Phase 1:** Setup & Data Access (Worker 2)
+- [x] **Phase 2:** RAG Engine (Worker 1)
+- [x] **Phase 3:** Prompt Engineering
 - [ ] **Phase 4:** Graph Orchestration
 - [ ] **Phase 5:** CLI Integration & Single Testing
 - [ ] **Phase 6:** Batch Processing & Traceability

@@ -44,3 +44,11 @@ File này định nghĩa các task có độ lớn vừa phải, giúp AI Agent 
   2. Sinh ra file tổng hợp `summary.json` liệt kê tỷ lệ thành công, các route đã thực thi và status.
   3. Tại `src/app/cli.py`: Hoàn thiện xử lý parameter `--batch`.
 - **Tiêu chí hoàn thành (Verify):** Lệnh `uv run python -m app.cli --batch` chạy ra hàng loạt logs, thư mục trace ghi nhận đúng 15 files và file `summary.json` có đủ thông tin.
+
+## Task 6: Hoàn thiện & Refactor (Test Automation)
+- **Mục tiêu:** Chuyển đổi các script test thủ công sang bộ test tự động vững chắc.
+- **Công việc chi tiết:**
+  1. Khi bước sang Phase 4, 5 (Hoàn thiện & Refactor): Chúng ta nên gom các file `test_*.py` này bỏ vào một thư mục `tests/`.
+  2. Cài đặt `pytest`.
+  3. Chuyển các hàm `print()` thành các câu lệnh `assert` để hình thành bộ test tự động vững chắc.
+- **Tiêu chí hoàn thành (Verify):** Cấu trúc lại thư mục thành công và lệnh `pytest tests/` chạy pass toàn bộ các test cases.
