@@ -1,0 +1,50 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 2058 còn trong thời gian trả hàng không?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Đơn hàng 2058 còn trong thời gian trả hàng không?",
+    "output": {
+      "status": "not_found",
+      "summary": "Chính sách quy định thời hạn trả hàng tối đa là 15 ngày kể từ khi đơn hàng cập nhật trạng thái giao hàng thành công đối với các ngành hàng thông thường, 3 ngày cho hàng tiêu dùng nhanh/mỹ phẩm/thực phẩm, và 24 giờ cho hàng tươi sống. Tuy nhiên, để xác định chính xác đơn hàng 2058 còn trong thời gian trả hàng hay không, cần kiểm tra ngày giao hàng cụ thể của đơn này và loại sản phẩm, vì thông tin chi tiết về đơn hàng 2058 không có trong dữ liệu chính sách được tìm thấy.",
+      "facts": [
+        "Thời hạn trả hàng mặc định là 15 ngày kể từ khi đơn hàng giao hàng thành công đối với ngành hàng thông thường.",
+        "Thời hạn trả hàng là 3 ngày đối với hàng tiêu dùng nhanh, mỹ phẩm dùng thử, thực phẩm hoặc sản phẩm rủi ro vệ sinh cao.",
+        "Thời hạn trả hàng là 24 giờ đối với hàng tươi sống hoặc hàng có điều kiện bảo quản đặc biệt.",
+        "Thời hạn cụ thể có thể thay đổi tùy theo dữ liệu sản phẩm hoặc đơn hàng."
+      ],
+      "citations": [
+        "5. Chính sách đổi trả và hoàn tiền > 5.1. Điều kiện chung để gửi yêu cầu"
+      ]
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 2058 còn trong thời gian trả hàng không?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 2058 vẫn còn trong thời gian trả hàng.",
+      "facts": [
+        "Đơn hàng 2058 đã được giao vào ngày 2026-06-01T17:10",
+        "Thời hạn trả hàng kết thúc vào ngày 2026-06-16",
+        "Hiện tại đơn hàng vẫn có thể trả hàng (can_return_now: true)",
+        "Có 2 sản phẩm có thể trả hàng trong đơn này"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 2058 còn trong thời gian trả hàng không?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {'status': 'not_found', 'summary': 'Chính sách quy định thời hạn trả hàng tối đa là 15 ngày kể từ khi đơn hàng cập nhật trạng thái giao hàng thành công đối với các ngành hàng thông thường, 3 ngày cho hàng tiêu dùng nhanh/mỹ phẩm/thực phẩm, và 24 giờ cho hàng tươi sống. Tuy nhiên, để xác định chính xác đơn hàng 2058 còn trong thời gian trả hàng hay không, cần kiểm tra ngày giao hàng cụ thể của đơn này và loại sản phẩm, vì thông tin chi tiết về đơn hàng 2058 không có trong dữ liệu chính sách được tìm thấy.', 'facts': ['Thời hạn trả hàng mặc định là 15 ngày kể từ khi đơn hàng giao hàng thành công đối với ngành hàng thông thường.', 'Thời hạn trả hàng là 3 ngày đối với hàng tiêu dùng nhanh, mỹ phẩm dùng thử, thực phẩm hoặc sản phẩm rủi ro vệ sinh cao.', 'Thời hạn trả hàng là 24 giờ đối với hàng tươi sống hoặc hàng có điều kiện bảo quản đặc biệt.', 'Thời hạn cụ thể có thể thay đổi tùy theo dữ liệu sản phẩm hoặc đơn hàng.'], 'citations': ['5. Chính sách đổi trả và hoàn tiền > 5.1. Điều kiện chung để gửi yêu cầu']}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 2058 vẫn còn trong thời gian trả hàng.', 'facts': ['Đơn hàng 2058 đã được giao vào ngày 2026-06-01T17:10', 'Thời hạn trả hàng kết thúc vào ngày 2026-06-16', 'Hiện tại đơn hàng vẫn có thể trả hàng (can_return_now: true)', 'Có 2 sản phẩm có thể trả hàng trong đơn này'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Xin chào! Đơn hàng 2058 của bạn hiện vẫn còn trong thời gian được phép trả hàng. Bạn có thể thực hiện yêu cầu trả hàng cho các sản phẩm trong đơn này trước ngày 16/06/2026.\nEvidence:\n- Policy: Chính sách quy định thời hạn trả hàng tối đa là 15 ngày kể từ khi đơn hàng cập nhật trạng thái giao hàng thành công đối với các ngành hàng thông thường.\n- Order data: Đơn hàng 2058 đã được giao vào ngày 2026-06-01, thời hạn trả hàng kết thúc vào ngày 2026-06-16 và hiện tại đơn hàng vẫn có thể trả hàng (can_return_now: true)."
+  }
+]

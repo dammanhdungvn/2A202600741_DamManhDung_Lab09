@@ -1,0 +1,35 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Khách hàng C001 tối đa dùng bao nhiêu voucher mỗi tháng?",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Khách hàng C001 tối đa dùng bao nhiêu voucher mỗi tháng?",
+    "output": {
+      "status": "ok",
+      "summary": "Khách hàng C001 có thể sử dụng tối đa 10 voucher mỗi tháng.",
+      "facts": [
+        "Customer ID: C001",
+        "Customer name: Nguyen Thu Anh",
+        "Tier: Gold",
+        "Maximum vouchers per month: 10",
+        "Vouchers used this month: 4",
+        "Remaining voucher quota this month: 6"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Khách hàng C001 tối đa dùng bao nhiêu voucher mỗi tháng?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Khách hàng C001 có thể sử dụng tối đa 10 voucher mỗi tháng.', 'facts': ['Customer ID: C001', 'Customer name: Nguyen Thu Anh', 'Tier: Gold', 'Maximum vouchers per month: 10', 'Vouchers used this month: 4', 'Remaining voucher quota this month: 6'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Chào bạn, khách hàng C001 (Nguyen Thu Anh) thuộc hạng Gold có thể sử dụng tối đa 10 voucher mỗi tháng.\nEvidence:\n- Policy: N/A\n- Order data: Khách hàng C001 có thể sử dụng tối đa 10 voucher mỗi tháng."
+  }
+]

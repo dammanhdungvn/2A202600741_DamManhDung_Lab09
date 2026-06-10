@@ -1,0 +1,30 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Kiểm tra đơn hàng 9999 giúp tôi",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Kiểm tra đơn hàng 9999 giúp tôi",
+    "output": {
+      "status": "not_found",
+      "summary": "Không tìm thấy đơn hàng với ID 9999.",
+      "facts": [],
+      "missing_fields": [],
+      "not_found_entities": [
+        "order_id: 9999"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Kiểm tra đơn hàng 9999 giúp tôi\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'not_found', 'summary': 'Không tìm thấy đơn hàng với ID 9999.', 'facts': [], 'missing_fields': [], 'not_found_entities': ['order_id: 9999']}\n\n",
+    "output": "Status: not_found\nMessage: Xin lỗi, hệ thống không tìm thấy đơn hàng mang mã 9999. Vui lòng kiểm tra lại số đơn hàng của bạn hoặc liên hệ bộ phận hỗ trợ nếu cần thiết."
+  }
+]

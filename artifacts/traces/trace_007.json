@@ -1,0 +1,33 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Cho tôi xem danh sách đơn hàng của khách hàng C001",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Cho tôi xem danh sách đơn hàng của khách hàng C001",
+    "output": {
+      "status": "ok",
+      "summary": "Khách hàng C001 (Nguyen Thu Anh) có tổng cộng 4 đơn hàng trong hệ thống.",
+      "facts": [
+        "Đơn hàng 1971: Trạng thái in_transit, sản phẩm Giày sneaker StreetGo, tổng thanh toán 1,118,000 VND",
+        "Đơn hàng 1901: Trạng thái completed, sản phẩm Bình nước thể thao ActiveFlow 1L, tổng thanh toán 303,427 VND",
+        "Đơn hàng 2160: Trạng thái in_transit, sản phẩm Mã quà tặng học trực tuyến SkillPass, tổng thanh toán 1,092,876 VND",
+        "Đơn hàng 2259: Trạng thái completed, sản phẩm Tai nghe Bluetooth AirBeat S5 và Áo sơ mi linen UrbanForm, tổng thanh toán 2,161,638 VND"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Cho tôi xem danh sách đơn hàng của khách hàng C001\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Khách hàng C001 (Nguyen Thu Anh) có tổng cộng 4 đơn hàng trong hệ thống.', 'facts': ['Đơn hàng 1971: Trạng thái in_transit, sản phẩm Giày sneaker StreetGo, tổng thanh toán 1,118,000 VND', 'Đơn hàng 1901: Trạng thái completed, sản phẩm Bình nước thể thao ActiveFlow 1L, tổng thanh toán 303,427 VND', 'Đơn hàng 2160: Trạng thái in_transit, sản phẩm Mã quà tặng học trực tuyến SkillPass, tổng thanh toán 1,092,876 VND', 'Đơn hàng 2259: Trạng thái completed, sản phẩm Tai nghe Bluetooth AirBeat S5 và Áo sơ mi linen UrbanForm, tổng thanh toán 2,161,638 VND'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Chào bạn! Dưới đây là danh sách đơn hàng của khách hàng C001 (Nguyễn Thu Anh):\n\n**Tổng cộng: 4 đơn hàng**\n\n| Số Đơn Hàng | Trạng Thái | Sản Phẩm | Tổng Thanh Toán |\n|-------------|------------|----------|-----------------|\n| 1971 | Đang vận chuyển | Giày sneaker StreetGo | 1,118,000 VND |\n| 1901 | Hoàn thành | Bình nước thể thao ActiveFlow 1L | 303,427 VND |\n| 2160 | Đang vận chuyển | Mã quà tặng học trực tuyến SkillPass | 1,092,876 VND |\n| 2259 | Hoàn thành | Tai nghe Bluetooth AirBeat S5 + Áo sơ mi linen UrbanForm | 2,161,638 VND |\n\nNếu bạn cần thêm thông tin chi tiết về bất kỳ đơn hàng nào, hãy cho tôi biết nhé!\n\nEvidence:\n- Policy: N/A\n- Order data: Khách hàng C001 (Nguyen Thu Anh) có tổng cộng 4 đơn hàng trong hệ thống"
+  }
+]

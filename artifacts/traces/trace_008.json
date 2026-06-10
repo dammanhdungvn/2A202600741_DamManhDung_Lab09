@@ -1,0 +1,36 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Voucher của khách hàng C001 còn những mã nào dùng được?",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Voucher của khách hàng C001 còn những mã nào dùng được?",
+    "output": {
+      "status": "ok",
+      "summary": "Khách hàng C001 hiện có 1 voucher đang hoạt động.",
+      "facts": [
+        "Mã voucher: C001-BDAY-0626",
+        "Loại voucher: platform (sinh nhật)",
+        "Giá trị giảm: 50,000 VNĐ (giảm cố định)",
+        "Đơn hàng tối thiểu: 399,000 VNĐ",
+        "Hạn sử dụng: từ 2026-06-01 đến 2026-06-30",
+        "Số lần dùng còn lại: 1",
+        "Có thể kết hợp với voucher shop và shipping"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Voucher của khách hàng C001 còn những mã nào dùng được?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Khách hàng C001 hiện có 1 voucher đang hoạt động.', 'facts': ['Mã voucher: C001-BDAY-0626', 'Loại voucher: platform (sinh nhật)', 'Giá trị giảm: 50,000 VNĐ (giảm cố định)', 'Đơn hàng tối thiểu: 399,000 VNĐ', 'Hạn sử dụng: từ 2026-06-01 đến 2026-06-30', 'Số lần dùng còn lại: 1', 'Có thể kết hợp với voucher shop và shipping'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Chào bạn, hiện tại khách hàng C001 đang có 1 voucher đang hoạt động. Chi tiết mã voucher như sau:\n- Mã: C001-BDAY-0626\n- Loại: Platform (sinh nhật)\n- Giá trị giảm: 50,000 VNĐ (giảm cố định)\n- Điều kiện: Đơn hàng tối thiểu 399,000 VNĐ\n- Hạn sử dụng: Từ 01/06/2026 đến 30/06/2026\n- Số lần dùng còn lại: 1\n- Ghi chú: Có thể kết hợp với voucher shop và voucher ship.\n\nEvidence:\n- Policy: N/A\n- Order data: Khách hàng C001 hiện có 1 voucher đang hoạt động. Mã voucher: C001-BDAY-0626. Loại: platform (sinh nhật). Giá trị giảm: 50,000 VNĐ. Đơn hàng tối thiểu: 399,000 VNĐ. Hạn sử dụng: từ 2026-06-01 đến 2026-06-30. Số lần dùng còn lại: 1. Có thể kết hợp với voucher shop và shipping."
+  }
+]

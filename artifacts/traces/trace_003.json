@@ -1,0 +1,34 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Khách có được kiểm hàng khi nhận không?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Khách có được kiểm hàng khi nhận không?",
+    "output": {
+      "status": "ok",
+      "summary": "Khách hàng được phép kiểm tra ngoại quan của gói hàng trước khi xác nhận nhận. Đối với các sản phẩm giá trị cao, khách hàng nên quay video quá trình mở kiện. Nếu phát hiện hàng bị vỡ, móp, thiếu phụ kiện hoặc sai sản phẩm, khách cần báo ngay trên ứng dụng. Tuy nhiên, việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không được coi là 'kiểm hàng tại chỗ'.",
+      "facts": [
+        "Khách hàng được phép kiểm tra ngoại quan gói hàng trước khi xác nhận nhận.",
+        "Khách hàng nên quay video mở kiện đối với sản phẩm giá trị cao.",
+        "Nếu phát hiện hàng vỡ, móp, thiếu phụ kiện hoặc sai sản phẩm, khách phải báo ngay trên ứng dụng.",
+        "Việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không thuộc phạm vi kiểm hàng tại chỗ."
+      ],
+      "citations": [
+        "4. Chính sách giao hàng > 4.6. Kiểm hàng khi nhận"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Khách có được kiểm hàng khi nhận không?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': \"Khách hàng được phép kiểm tra ngoại quan của gói hàng trước khi xác nhận nhận. Đối với các sản phẩm giá trị cao, khách hàng nên quay video quá trình mở kiện. Nếu phát hiện hàng bị vỡ, móp, thiếu phụ kiện hoặc sai sản phẩm, khách cần báo ngay trên ứng dụng. Tuy nhiên, việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không được coi là 'kiểm hàng tại chỗ'.\", 'facts': ['Khách hàng được phép kiểm tra ngoại quan gói hàng trước khi xác nhận nhận.', 'Khách hàng nên quay video mở kiện đối với sản phẩm giá trị cao.', 'Nếu phát hiện hàng vỡ, móp, thiếu phụ kiện hoặc sai sản phẩm, khách phải báo ngay trên ứng dụng.', 'Việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không thuộc phạm vi kiểm hàng tại chỗ.'], 'citations': ['4. Chính sách giao hàng > 4.6. Kiểm hàng khi nhận']}\n\nData findings: {}\n\n",
+    "output": "Answer: Chào bạn, theo chính sách, khách hàng được phép kiểm tra ngoại quan của gói hàng trước khi xác nhận nhận. Đối với sản phẩm giá trị cao, bạn nên quay video quá trình mở kiện để đảm bảo an toàn. Nếu phát hiện hàng bị vỡ, móp, thiếu phụ kiện hoặc sai sản phẩm, vui lòng báo ngay trên ứng dụng. Tuy nhiên, lưu ý rằng việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không được coi là 'kiểm hàng tại chỗ'.\nEvidence:\n- Policy: Khách hàng được phép kiểm tra ngoại quan của gói hàng trước khi xác nhận nhận. Đối với các sản phẩm giá trị cao, khách hàng nên quay video quá trình mở kiện. Nếu phát hiện hàng bị vỡ, móp, thiếu phụ kiện hoặc sai sản phẩm, khách cần báo ngay trên ứng dụng. Tuy nhiên, việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không được coi là 'kiểm hàng tại chỗ'.\n- Order data: N/A"
+  }
+]

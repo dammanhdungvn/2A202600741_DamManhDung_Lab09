@@ -1,0 +1,34 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Các trường hợp nào thường không hỗ trợ trả hàng?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Các trường hợp nào thường không hỗ trợ trả hàng?",
+    "output": {
+      "status": "ok",
+      "summary": "Dựa trên chính sách hiện có, các trường hợp thường không hỗ trợ trả hàng hoặc bị hạn chế bao gồm: việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài sản phẩm không thuộc phạm vi kiểm tra khi nhận và do đó có thể ảnh hưởng đến quyền trả hàng. Ngoài ra, đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường. Các đơn đang trong quá trình vận chuyển (in_transit) có thể được hủy hoặc từ chối nhận nhưng không được xem là đã thực hiện trả hàng theo quy trình tiêu chuẩn.",
+      "facts": [
+        "Việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không thuộc phạm vi kiểm hàng tại chỗ và có thể làm mất quyền trả hàng.",
+        "Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường.",
+        "Đơn hàng đang trong trạng thái vận chuyển (in_transit) có thể bị hủy hoặc từ chối nhận nhưng không được tính là 'đã trả hàng'."
+      ],
+      "citations": [
+        "4. Chính sách giao hàng > 4.6. Kiểm hàng khi nhận",
+        "5. Chính sách đổi trả và hoàn tiền > 5.10. Quan hệ giữa trạng thái đơn hàng và quyền trả hàng"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Các trường hợp nào thường không hỗ trợ trả hàng?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': 'Dựa trên chính sách hiện có, các trường hợp thường không hỗ trợ trả hàng hoặc bị hạn chế bao gồm: việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài sản phẩm không thuộc phạm vi kiểm tra khi nhận và do đó có thể ảnh hưởng đến quyền trả hàng. Ngoài ra, đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường. Các đơn đang trong quá trình vận chuyển (in_transit) có thể được hủy hoặc từ chối nhận nhưng không được xem là đã thực hiện trả hàng theo quy trình tiêu chuẩn.', 'facts': ['Việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài không thuộc phạm vi kiểm hàng tại chỗ và có thể làm mất quyền trả hàng.', 'Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường.', \"Đơn hàng đang trong trạng thái vận chuyển (in_transit) có thể bị hủy hoặc từ chối nhận nhưng không được tính là 'đã trả hàng'.\"], 'citations': ['4. Chính sách giao hàng > 4.6. Kiểm hàng khi nhận', '5. Chính sách đổi trả và hoàn tiền > 5.10. Quan hệ giữa trạng thái đơn hàng và quyền trả hàng']}\n\nData findings: {}\n\n",
+    "output": "Answer: Dựa trên chính sách hiện có, các trường hợp thường không hỗ trợ trả hàng hoặc bị hạn chế bao gồm:\n\n1. **Sản phẩm đã được dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài**: Những hành động này không thuộc phạm vi kiểm tra khi nhận hàng và có thể làm mất quyền trả hàng.\n\n2. **Đơn hàng chưa giao thành công**: Thường chưa thể bắt đầu quy trình trả hàng thông thường.\n\n3. **Đơn hàng đang trong quá trình vận chuyển (in_transit)**: Có thể bị hủy hoặc từ chối nhận nhưng không được tính là \"đã trả hàng\" theo quy trình tiêu chuẩn.\n\nNếu bạn cần hỗ trợ thêm về tình trạng đơn hàng cụ thể của mình, vui lòng cung cấp mã đơn hàng để chúng tôi kiểm tra chi tiết hơn!\n\nEvidence:\n- Policy: Dựa trên chính sách hiện có, các trường hợp thường không hỗ trợ trả hàng hoặc bị hạn chế bao gồm: việc dùng thử sâu, lắp đặt, kích hoạt hoặc sử dụng lâu dài sản phẩm không thuộc phạm vi kiểm tra khi nhận và do đó có thể ảnh hưởng đến quyền trả hàng. Ngoài ra, đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường. Các đơn đang trong quá trình vận chuyển (in_transit) có thể được hủy hoặc từ chối nhận nhưng không được xem là đã thực hiện trả hàng theo quy trình tiêu chuẩn.\n- Order data: N/A"
+  }
+]

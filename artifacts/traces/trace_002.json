@@ -1,0 +1,27 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Giao hàng tiêu chuẩn thường mất bao lâu?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Giao hàng tiêu chuẩn thường mất bao lâu?",
+    "output": {
+      "status": "not_found",
+      "summary": "Không tìm thấy thông tin cụ thể về thời gian giao hàng tiêu chuẩn trong chính sách được truy xuất. Các tài liệu hiện có chỉ đề cập đến điều kiện cho giao hàng nhanh và ưu tiên, quy trình kiểm hàng khi nhận, cũng như bằng chứng cần thiết cho đổi trả và hoàn tiền.",
+      "facts": [],
+      "citations": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Giao hàng tiêu chuẩn thường mất bao lâu?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'not_found', 'summary': 'Không tìm thấy thông tin cụ thể về thời gian giao hàng tiêu chuẩn trong chính sách được truy xuất. Các tài liệu hiện có chỉ đề cập đến điều kiện cho giao hàng nhanh và ưu tiên, quy trình kiểm hàng khi nhận, cũng như bằng chứng cần thiết cho đổi trả và hoàn tiền.', 'facts': [], 'citations': []}\n\nData findings: {}\n\n",
+    "output": "Status: not_found\nMessage: Xin lỗi, chúng tôi không tìm thấy thông tin cụ thể về thời gian giao hàng tiêu chuẩn trong các tài liệu hiện có. Các chính sách hiện tại chỉ đề cập đến điều kiện cho giao hàng nhanh và ưu tiên. Bạn vui lòng liên hệ bộ phận hỗ trợ để được cung cấp thông tin chính xác nhất."
+  }
+]

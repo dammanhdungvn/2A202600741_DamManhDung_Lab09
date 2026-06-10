@@ -31,9 +31,9 @@
 - [x] **Phase 1:** Setup & Data Access (Worker 2)
 - [x] **Phase 2:** RAG Engine (Worker 1)
 - [x] **Phase 3:** Prompt Engineering
-- [ ] **Phase 4:** Graph Orchestration
-- [ ] **Phase 5:** CLI Integration & Single Testing
-- [ ] **Phase 6:** Batch Processing & Traceability
+- [x] **Phase 4:** Graph Orchestration
+- [x] **Phase 5:** CLI Integration & Single Testing
+- [x] **Phase 6:** Batch Processing & Traceability
 
 ## What NOT To Do
 - DO NOT use an LLM provider other than the custom one defined in `.env`.

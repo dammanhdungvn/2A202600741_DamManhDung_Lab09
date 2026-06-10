@@ -1,0 +1,44 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 1971 có được hoàn trả không?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Đơn hàng 1971 có được hoàn trả không?",
+    "output": {
+      "status": "not_found",
+      "summary": "Không tìm thấy thông tin cụ thể về việc đơn hàng 1971 có được hoàn trả hay không trong các chính sách hiện có. Chính sách chỉ nêu rõ rằng để xác định quyền trả hàng, cần kiểm tra trạng thái của đơn hàng (ví dụ: đã giao thành công chưa, còn trong thời hạn trả hàng hay không) và các điều kiện cụ thể khác. Cần cung cấp thêm thông tin như trạng thái đơn hàng hoặc ngày giao hàng để đánh giá.",
+      "facts": [],
+      "citations": []
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 1971 có được hoàn trả không?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 1971 hiện tại chưa thể hoàn trả vì đang trong quá trình vận chuyển và chưa được giao thành công.",
+      "facts": [
+        "Đơn hàng 1971 có trạng thái là 'in_transit' (đang trên đường giao)",
+        "can_return_now: False - đơn hàng không thể hoàn trả ngay lúc này",
+        "eligible_for_return_until: None - chưa đến thời điểm đủ điều kiện để hoàn trả",
+        "Đơn hàng có 1 sản phẩm có thể hoàn trả (Giày sneaker StreetGo) với cửa sổ hoàn trả 15 ngày",
+        "Sản phẩm đã được đánh dấu là returnable: True nhưng phải đợi đơn hàng được giao trước"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 1971 có được hoàn trả không?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {'status': 'not_found', 'summary': 'Không tìm thấy thông tin cụ thể về việc đơn hàng 1971 có được hoàn trả hay không trong các chính sách hiện có. Chính sách chỉ nêu rõ rằng để xác định quyền trả hàng, cần kiểm tra trạng thái của đơn hàng (ví dụ: đã giao thành công chưa, còn trong thời hạn trả hàng hay không) và các điều kiện cụ thể khác. Cần cung cấp thêm thông tin như trạng thái đơn hàng hoặc ngày giao hàng để đánh giá.', 'facts': [], 'citations': []}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 1971 hiện tại chưa thể hoàn trả vì đang trong quá trình vận chuyển và chưa được giao thành công.', 'facts': [\"Đơn hàng 1971 có trạng thái là 'in_transit' (đang trên đường giao)\", 'can_return_now: False - đơn hàng không thể hoàn trả ngay lúc này', 'eligible_for_return_until: None - chưa đến thời điểm đủ điều kiện để hoàn trả', 'Đơn hàng có 1 sản phẩm có thể hoàn trả (Giày sneaker StreetGo) với cửa sổ hoàn trả 15 ngày', 'Sản phẩm đã được đánh dấu là returnable: True nhưng phải đợi đơn hàng được giao trước'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Xin chào, hiện tại đơn hàng 1971 chưa thể thực hiện thủ tục hoàn trả. Theo thông tin từ hệ thống, đơn hàng đang trong trạng thái \"đang trên đường giao\" (in_transit) và chưa được giao thành công đến tay bạn. Bạn vui lòng chờ đơn hàng được giao xong, sau đó mới đủ điều kiện để xem xét hoàn trả sản phẩm theo chính sách.\nEvidence:\n- Policy: Không tìm thấy thông tin chính sách cụ thể cho đơn hàng 1971, tuy nhiên quy định chung yêu cầu kiểm tra trạng thái đơn hàng (đã giao thành công chưa) để xác định quyền trả hàng.\n- Order data: Đơn hàng 1971 có trạng thái 'in_transit', không thể hoàn trả ngay lúc này (can_return_now: False). Sản phẩm Giày sneaker StreetGo có thể hoàn trả sau khi giao với cửa sổ 15 ngày."
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 2058 nếu khách đổi ý thì có thể trả trong bao lâu?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Đơn hàng 2058 nếu khách đổi ý thì có thể trả trong bao lâu?",
+    "output": {
+      "status": "ok",
+      "summary": "Thời hạn trả hàng khi khách đổi ý phụ thuộc vào loại sản phẩm. Đối với đa số ngành hàng thông thường, thời hạn tối đa là 15 ngày kể từ khi đơn hàng được cập nhật trạng thái giao hàng thành công. Đối với hàng tiêu dùng nhanh, mỹ phẩm dùng thử, thực phẩm hoặc sản phẩm có rủi ro vệ sinh cao, thời hạn là tối đa 3 ngày. Riêng đối với hàng tươi sống hoặc hàng có điều kiện bảo quản đặc biệt, thời hạn chỉ là 24 giờ. Thời hạn cụ thể cũng có thể được quy định riêng trong dữ liệu sản phẩm hoặc đơn hàng.",
+      "facts": [
+        "Thời hạn trả hàng mặc định cho đa số ngành hàng thông thường là tối đa 15 ngày kể từ khi giao hàng thành công.",
+        "Thời hạn trả hàng cho hàng tiêu dùng nhanh, mỹ phẩm dùng thử, thực phẩm hoặc sản phẩm có rủi ro vệ sinh cao là tối đa 3 ngày.",
+        "Thời hạn trả hàng cho hàng tươi sống hoặc hàng có điều kiện bảo quản đặc biệt là tối đa 24 giờ.",
+        "Thời hạn cụ thể có thể được ghi đè bởi dữ liệu sản phẩm hoặc đơn hàng."
+      ],
+      "citations": [
+        "5. Chính sách đổi trả và hoàn tiền > 5.1. Điều kiện chung để gửi yêu cầu"
+      ]
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 2058 nếu khách đổi ý thì có thể trả trong bao lâu?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 2058 có thể được trả trong vòng 15 ngày kể từ ngày giao hàng. Thời hạn trả hàng kết thúc vào ngày 2026-06-16.",
+      "facts": [
+        "Đơn hàng 2058 đã được giao thành công vào ngày 2026-06-01",
+        "Thời gian trả hàng là 15 ngày kể từ ngày giao hàng",
+        "Hạn chót để trả hàng là ngày 2026-06-16",
+        "Hiện tại đơn hàng vẫn còn trong thời gian hỗ trợ trả hàng",
+        "Có 2 sản phẩm có thể trả hàng trong đơn này"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 2058 nếu khách đổi ý thì có thể trả trong bao lâu?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': 'Thời hạn trả hàng khi khách đổi ý phụ thuộc vào loại sản phẩm. Đối với đa số ngành hàng thông thường, thời hạn tối đa là 15 ngày kể từ khi đơn hàng được cập nhật trạng thái giao hàng thành công. Đối với hàng tiêu dùng nhanh, mỹ phẩm dùng thử, thực phẩm hoặc sản phẩm có rủi ro vệ sinh cao, thời hạn là tối đa 3 ngày. Riêng đối với hàng tươi sống hoặc hàng có điều kiện bảo quản đặc biệt, thời hạn chỉ là 24 giờ. Thời hạn cụ thể cũng có thể được quy định riêng trong dữ liệu sản phẩm hoặc đơn hàng.', 'facts': ['Thời hạn trả hàng mặc định cho đa số ngành hàng thông thường là tối đa 15 ngày kể từ khi giao hàng thành công.', 'Thời hạn trả hàng cho hàng tiêu dùng nhanh, mỹ phẩm dùng thử, thực phẩm hoặc sản phẩm có rủi ro vệ sinh cao là tối đa 3 ngày.', 'Thời hạn trả hàng cho hàng tươi sống hoặc hàng có điều kiện bảo quản đặc biệt là tối đa 24 giờ.', 'Thời hạn cụ thể có thể được ghi đè bởi dữ liệu sản phẩm hoặc đơn hàng.'], 'citations': ['5. Chính sách đổi trả và hoàn tiền > 5.1. Điều kiện chung để gửi yêu cầu']}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 2058 có thể được trả trong vòng 15 ngày kể từ ngày giao hàng. Thời hạn trả hàng kết thúc vào ngày 2026-06-16.', 'facts': ['Đơn hàng 2058 đã được giao thành công vào ngày 2026-06-01', 'Thời gian trả hàng là 15 ngày kể từ ngày giao hàng', 'Hạn chót để trả hàng là ngày 2026-06-16', 'Hiện tại đơn hàng vẫn còn trong thời gian hỗ trợ trả hàng', 'Có 2 sản phẩm có thể trả hàng trong đơn này'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Đối với đơn hàng 2058, nếu khách đổi ý thì có thể trả hàng trong vòng **15 ngày** kể từ khi đơn hàng được giao thành công. \n\nCụ thể:\n- Đơn hàng đã được giao thành công vào ngày **01/06/2026**\n- Thời hạn trả hàng kết thúc vào ngày **16/06/2026**\n- Hiện tại đơn hàng vẫn còn trong thời gian hỗ trợ trả hàng\n- Có **2 sản phẩm** có thể trả hàng trong đơn này\n\nLưu ý: Thời hạn trả hàng có thể thay đổi tùy thuộc vào loại sản phẩm. Nếu bạn cần thêm thông tin chi tiết về từng sản phẩm cụ thể, vui lòng liên hệ bộ phận chăm sóc khách hàng để được hỗ trợ tốt nhất.\n\nEvidence:\n- Policy: Thời hạn trả hàng mặc định cho đa số ngành hàng thông thường là tối đa 15 ngày kể từ khi giao hàng thành công.\n- Order data: Đơn hàng 2058 đã được giao thành công vào ngày 2026-06-01, thời gian trả hàng là 15 ngày kể từ ngày giao hàng, hạn chót để trả hàng là ngày 2026-06-16."
+  }
+]

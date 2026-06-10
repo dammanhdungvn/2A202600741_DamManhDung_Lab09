@@ -1,0 +1,50 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 1971 có được hoàn trả không?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Đơn hàng 1971 có được hoàn trả không?",
+    "output": {
+      "status": "not_found",
+      "summary": "Không tìm thấy thông tin cụ thể về việc đơn hàng 1971 có được hoàn trả hay không trong các chính sách hiện có. Chính sách chỉ nêu rõ rằng để xác định quyền trả hàng, cần kiểm tra trạng thái của đơn hàng (ví dụ: đã giao thành công chưa) và thời điểm giao hàng so với hạn chót cho phép trả hàng. Cần thêm thông tin như trạng thái đơn hàng hoặc ngày giao hàng để đưa ra câu trả lời chính xác.",
+      "facts": [
+        "Quyền trả hàng phụ thuộc vào trạng thái đơn hàng (chưa giao, đang vận chuyển, đã giao, hoàn tất).",
+        "Đơn hàng 'delivered' là trạng thái thường dùng để tính cửa sổ đổi trả.",
+        "Cần biết thời điểm giao hàng để xác định xem còn nằm trong hạn trả hàng hay không."
+      ],
+      "citations": [
+        "5. Chính sách đổi trả và hoàn tiền > 5.10. Quan hệ giữa trạng thái đơn hàng và quyền trả hàng"
+      ]
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 1971 có được hoàn trả không?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 1971 hiện tại chưa thể hoàn trả vì đang trong quá trình vận chuyển và chưa được giao thành công.",
+      "facts": [
+        "Order ID 1971 có trạng thái là 'in_transit' (đang trên đường giao)",
+        "can_return_now: False - đơn hàng không thể hoàn trả ngay lúc này",
+        "eligible_for_return_until: None - chưa đến thời điểm đủ điều kiện để hoàn trả",
+        "Đơn hàng có 1 sản phẩm có thể hoàn trả (Giày sneaker StreetGo) với cửa sổ hoàn trả 15 ngày",
+        "Sản phẩm đã được đánh dấu là returnable: True nhưng phải chờ đơn hàng được giao trước"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 1971 có được hoàn trả không?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {'status': 'not_found', 'summary': 'Không tìm thấy thông tin cụ thể về việc đơn hàng 1971 có được hoàn trả hay không trong các chính sách hiện có. Chính sách chỉ nêu rõ rằng để xác định quyền trả hàng, cần kiểm tra trạng thái của đơn hàng (ví dụ: đã giao thành công chưa) và thời điểm giao hàng so với hạn chót cho phép trả hàng. Cần thêm thông tin như trạng thái đơn hàng hoặc ngày giao hàng để đưa ra câu trả lời chính xác.', 'facts': ['Quyền trả hàng phụ thuộc vào trạng thái đơn hàng (chưa giao, đang vận chuyển, đã giao, hoàn tất).', \"Đơn hàng 'delivered' là trạng thái thường dùng để tính cửa sổ đổi trả.\", 'Cần biết thời điểm giao hàng để xác định xem còn nằm trong hạn trả hàng hay không.'], 'citations': ['5. Chính sách đổi trả và hoàn tiền > 5.10. Quan hệ giữa trạng thái đơn hàng và quyền trả hàng']}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 1971 hiện tại chưa thể hoàn trả vì đang trong quá trình vận chuyển và chưa được giao thành công.', 'facts': [\"Order ID 1971 có trạng thái là 'in_transit' (đang trên đường giao)\", 'can_return_now: False - đơn hàng không thể hoàn trả ngay lúc này', 'eligible_for_return_until: None - chưa đến thời điểm đủ điều kiện để hoàn trả', 'Đơn hàng có 1 sản phẩm có thể hoàn trả (Giày sneaker StreetGo) với cửa sổ hoàn trả 15 ngày', 'Sản phẩm đã được đánh dấu là returnable: True nhưng phải chờ đơn hàng được giao trước'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Đơn hàng 1971 hiện tại chưa thể hoàn trả được vì đang trong quá trình vận chuyển và chưa được giao thành công. Theo chính sách của chúng tôi, quyền trả hàng phụ thuộc vào trạng thái đơn hàng và thời điểm giao hàng. Khi đơn hàng đã được giao thành công, bạn sẽ có cửa sổ hoàn trả 15 ngày cho sản phẩm Giày sneaker StreetGo trong đơn này. Bạn vui lòng chờ đơn hàng được giao trước khi thực hiện yêu cầu hoàn trả.\n\nEvidence:\n- Policy: Quyền trả hàng phụ thuộc vào trạng thái đơn hàng (chưa giao, đang vận chuyển, đã giao, hoàn tất). Cần biết thời điểm giao hàng để xác định xem còn nằm trong hạn trả hàng hay không.\n- Order data: Đơn hàng 1971 có trạng thái là 'in_transit' (đang trên đường giao), can_return_now: False, eligible_for_return_until: None. Sản phẩm có thể hoàn trả với cửa sổ 15 ngày sau khi giao."
+  }
+]

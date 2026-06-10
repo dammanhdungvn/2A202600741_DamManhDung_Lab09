@@ -1,0 +1,39 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 2058 đang ở trạng thái nào?",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 2058 đang ở trạng thái nào?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 2058 đã được giao thành công (trạng thái: delivered)",
+      "facts": [
+        "Order ID: 2058",
+        "Customer: Võ Thanh Quân (C014)",
+        "Order Status: delivered",
+        "Payment Status: paid",
+        "Shipping Method: standard via Giao Hang Nhanh",
+        "Tracking Number: VN2058450091",
+        "Delivered At: 2026-06-01T17:10",
+        "Current Location: Delivered",
+        "Latest Status Note: Đơn đã giao thành công và vẫn còn trong thời gian hỗ trợ trả hàng.",
+        "Items: Tai nghe Bluetooth AirBeat S5, Sạc nhanh 65W NovaCharge"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 2058 đang ở trạng thái nào?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 2058 đã được giao thành công (trạng thái: delivered)', 'facts': ['Order ID: 2058', 'Customer: Võ Thanh Quân (C014)', 'Order Status: delivered', 'Payment Status: paid', 'Shipping Method: standard via Giao Hang Nhanh', 'Tracking Number: VN2058450091', 'Delivered At: 2026-06-01T17:10', 'Current Location: Delivered', 'Latest Status Note: Đơn đã giao thành công và vẫn còn trong thời gian hỗ trợ trả hàng.', 'Items: Tai nghe Bluetooth AirBeat S5, Sạc nhanh 65W NovaCharge'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Chào bạn, đơn hàng số 2058 của bạn hiện đã được giao thành công (trạng thái: delivered) vào lúc 17:10 ngày 01/06/2026. Bạn có thể yên tâm nhận hàng và vẫn còn trong thời gian hỗ trợ trả hàng nếu cần thiết.\nEvidence:\n- Policy: N/A\n- Order data: Đơn hàng 2058 đã được giao thành công (trạng thái: delivered). Khách hàng: Võ Thanh Quân (C014). Sản phẩm: Tai nghe Bluetooth AirBeat S5, Sạc nhanh 65W NovaCharge. Thời gian giao: 2026-06-01T17:10."
+  }
+]

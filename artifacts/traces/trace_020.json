@@ -1,0 +1,33 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Phương thức giao nhanh có thể bị chuyển sang giao tiêu chuẩn khi nào?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Phương thức giao nhanh có thể bị chuyển sang giao tiêu chuẩn khi nào?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng giao nhanh có thể bị chuyển sang phương thức giao tiêu chuẩn trong các trường hợp sau: cửa hàng bàn giao hàng chậm, sản phẩm vượt quá ngưỡng kích thước hoặc khối lượng cho phép, hoặc phát sinh rủi ro vận hành từ đơn vị vận chuyển.",
+      "facts": [
+        "Cửa hàng bàn giao hàng chậm",
+        "Sản phẩm vượt ngưỡng kích thước hoặc khối lượng cho phép",
+        "Phát sinh rủi ro vận hành từ đơn vị vận chuyển"
+      ],
+      "citations": [
+        "4. Chính sách giao hàng > 4.4. Giao hàng nhanh và giao ưu tiên"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Phương thức giao nhanh có thể bị chuyển sang giao tiêu chuẩn khi nào?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': 'Đơn hàng giao nhanh có thể bị chuyển sang phương thức giao tiêu chuẩn trong các trường hợp sau: cửa hàng bàn giao hàng chậm, sản phẩm vượt quá ngưỡng kích thước hoặc khối lượng cho phép, hoặc phát sinh rủi ro vận hành từ đơn vị vận chuyển.', 'facts': ['Cửa hàng bàn giao hàng chậm', 'Sản phẩm vượt ngưỡng kích thước hoặc khối lượng cho phép', 'Phát sinh rủi ro vận hành từ đơn vị vận chuyển'], 'citations': ['4. Chính sách giao hàng > 4.4. Giao hàng nhanh và giao ưu tiên']}\n\nData findings: {}\n\n",
+    "output": "Answer: Chào bạn, đơn hàng giao nhanh có thể được chuyển sang phương thức giao tiêu chuẩn trong một số trường hợp nhất định, bao gồm: cửa hàng bàn giao hàng chậm, sản phẩm vượt quá ngưỡng kích thước hoặc khối lượng cho phép, hoặc khi phát sinh rủi ro vận hành từ đơn vị vận chuyển.\nEvidence:\n- Policy: Đơn hàng giao nhanh có thể bị chuyển sang phương thức giao tiêu chuẩn trong các trường hợp sau: cửa hàng bàn giao hàng chậm, sản phẩm vượt quá ngưỡng kích thước hoặc khối lượng cho phép, hoặc phát sinh rủi ro vận hành từ đơn vị vận chuyển. (Trích dẫn: 4. Chính sách giao hàng > 4.4. Giao hàng nhanh và giao ưu tiên)\n- Order data: N/A"
+  }
+]

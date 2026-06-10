@@ -1,0 +1,34 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Voucher có được hoàn lại khi hủy đơn không?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Voucher có được hoàn lại khi hủy đơn không?",
+    "output": {
+      "status": "ok",
+      "summary": "Khi đơn hàng bị hủy, voucher có thể được hoàn lại nếu thỏa mãn các điều kiện nhất định. Các điều kiện bao gồm: voucher còn hiệu lực, chưa vượt giới hạn sử dụng, toàn bộ đơn hoặc phần sử dụng chung với voucher đã bị hủy, và voucher không thuộc nhóm chiến dịch bị loại trừ. Tuy nhiên, một số trường hợp cụ thể như voucher số lượng giới hạn đã hết lượt, voucher livestream hết hiệu lực, voucher video/flash campaign hết lượt, hoặc voucher phát hành cho sự kiện đặc biệt có quy định không hoàn sẽ không được hoàn lại.",
+      "facts": [
+        "Voucher có thể được hoàn lại khi đơn bị hủy nếu còn hiệu lực và chưa vượt giới hạn sử dụng.",
+        "Toàn bộ đơn hoặc toàn bộ phần sử dụng chung voucher phải bị hủy.",
+        "Voucher không thuộc nhóm chiến dịch bị loại trừ mới được hoàn lại.",
+        "Các voucher số lượng giới hạn đã hết lượt, livestream hết hiệu lực, video/flash campaign hết lượt, hoặc sự kiện đặc biệt có quy định không hoàn sẽ không được hoàn lại."
+      ],
+      "citations": [
+        "6. Chính sách voucher và khuyến mãi > 6.5. Hoàn lại voucher khi đơn bị hủy"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Voucher có được hoàn lại khi hủy đơn không?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': 'Khi đơn hàng bị hủy, voucher có thể được hoàn lại nếu thỏa mãn các điều kiện nhất định. Các điều kiện bao gồm: voucher còn hiệu lực, chưa vượt giới hạn sử dụng, toàn bộ đơn hoặc phần sử dụng chung với voucher đã bị hủy, và voucher không thuộc nhóm chiến dịch bị loại trừ. Tuy nhiên, một số trường hợp cụ thể như voucher số lượng giới hạn đã hết lượt, voucher livestream hết hiệu lực, voucher video/flash campaign hết lượt, hoặc voucher phát hành cho sự kiện đặc biệt có quy định không hoàn sẽ không được hoàn lại.', 'facts': ['Voucher có thể được hoàn lại khi đơn bị hủy nếu còn hiệu lực và chưa vượt giới hạn sử dụng.', 'Toàn bộ đơn hoặc toàn bộ phần sử dụng chung voucher phải bị hủy.', 'Voucher không thuộc nhóm chiến dịch bị loại trừ mới được hoàn lại.', 'Các voucher số lượng giới hạn đã hết lượt, livestream hết hiệu lực, video/flash campaign hết lượt, hoặc sự kiện đặc biệt có quy định không hoàn sẽ không được hoàn lại.'], 'citations': ['6. Chính sách voucher và khuyến mãi > 6.5. Hoàn lại voucher khi đơn bị hủy']}\n\nData findings: {}\n\n",
+    "output": "Answer: Chào bạn, về cơ bản voucher có thể được hoàn lại khi đơn hàng bị hủy nếu thỏa mãn các điều kiện nhất định. Cụ thể, voucher cần còn hiệu lực, chưa vượt giới hạn sử dụng và toàn bộ đơn (hoặc phần sử dụng chung với voucher) phải bị hủy. Tuy nhiên, có những trường hợp ngoại lệ như voucher số lượng giới hạn đã hết lượt, voucher livestream/video/flash campaign hết hiệu lực hoặc phát hành cho sự kiện đặc biệt có quy định không hoàn thì sẽ không được hoàn lại. Bạn nên kiểm tra kỹ điều khoản của từng loại voucher để biết chính xác nhé!\n\nEvidence:\n- Policy: Khi đơn hàng bị hủy, voucher có thể được hoàn lại nếu thỏa mãn các điều kiện nhất định. Các điều kiện bao gồm: voucher còn hiệu lực, chưa vượt giới hạn sử dụng, toàn bộ đơn hoặc phần sử dụng chung với voucher đã bị hủy, và voucher không thuộc nhóm chiến dịch bị loại trừ. Tuy nhiên, một số trường hợp cụ thể như voucher số lượng giới hạn đã hết lượt, voucher livestream hết hiệu lực, voucher video/flash campaign hết lượt, hoặc voucher phát hành cho sự kiện đặc biệt có quy định không hoàn sẽ không được hoàn lại.\n- Order data: N/A"
+  }
+]

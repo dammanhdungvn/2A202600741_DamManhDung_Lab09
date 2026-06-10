@@ -1,0 +1,35 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Khách hàng C001 thuộc hạng gì và còn quota voucher bao nhiêu?",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Khách hàng C001 thuộc hạng gì và còn quota voucher bao nhiêu?",
+    "output": {
+      "status": "ok",
+      "summary": "Khách hàng C001 thuộc hạng Gold và còn 6 voucher trong tháng này.",
+      "facts": [
+        "Khách hàng C001 có tên là Nguyen Thu Anh.",
+        "Hạng của khách hàng C001 là Gold.",
+        "Khách hàng được phép sử dụng tối đa 10 voucher mỗi tháng.",
+        "Khách hàng đã sử dụng 4 voucher trong tháng hiện tại.",
+        "Số lượng voucher còn lại (quota) trong tháng này là 6.",
+        "Tổng cộng khách hàng có 5 voucher trong hệ thống, trong đó 1 voucher đang ở trạng thái active."
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Khách hàng C001 thuộc hạng gì và còn quota voucher bao nhiêu?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Khách hàng C001 thuộc hạng Gold và còn 6 voucher trong tháng này.', 'facts': ['Khách hàng C001 có tên là Nguyen Thu Anh.', 'Hạng của khách hàng C001 là Gold.', 'Khách hàng được phép sử dụng tối đa 10 voucher mỗi tháng.', 'Khách hàng đã sử dụng 4 voucher trong tháng hiện tại.', 'Số lượng voucher còn lại (quota) trong tháng này là 6.', 'Tổng cộng khách hàng có 5 voucher trong hệ thống, trong đó 1 voucher đang ở trạng thái active.'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Xin chào, khách hàng C001 hiện đang thuộc hạng Gold và còn 6 voucher trong tháng này.\nEvidence:\n- Policy: N/A\n- Order data: Khách hàng C001 thuộc hạng Gold và còn 6 voucher trong tháng này."
+  }
+]

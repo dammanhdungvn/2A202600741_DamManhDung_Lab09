@@ -1,0 +1,35 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 1971 bao giờ được giao?",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 1971 bao giờ được giao?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 1971 đang được vận chuyển và dự kiến sẽ được giao vào ngày 2026-06-09.",
+      "facts": [
+        "Đơn hàng 1971 có trạng thái 'in_transit' (đang trên đường giao)",
+        "Ngày giao hàng dự kiến là 2026-06-09",
+        "Hãng vận chuyển là SPX Express",
+        "Mã theo dõi đơn hàng là VN1971888123",
+        "Đơn hàng hiện tại đang ở 'Destination Delivery Station'",
+        "Người nhận là Nguyen Thu Anh"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 1971 bao giờ được giao?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 1971 đang được vận chuyển và dự kiến sẽ được giao vào ngày 2026-06-09.', 'facts': [\"Đơn hàng 1971 có trạng thái 'in_transit' (đang trên đường giao)\", 'Ngày giao hàng dự kiến là 2026-06-09', 'Hãng vận chuyển là SPX Express', 'Mã theo dõi đơn hàng là VN1971888123', \"Đơn hàng hiện tại đang ở 'Destination Delivery Station'\", 'Người nhận là Nguyen Thu Anh'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Đơn hàng 1971 của bạn dự kiến sẽ được giao vào ngày 09/06/2026. Hiện tại đơn hàng đang trong quá trình vận chuyển.\nEvidence:\n- Policy: N/A\n- Order data: Đơn hàng 1971 đang ở trạng thái 'in_transit', dự kiến giao 2026-06-09, vận chuyển bởi SPX Express (Mã: VN1971888123), người nhận Nguyen Thu Anh."
+  }
+]

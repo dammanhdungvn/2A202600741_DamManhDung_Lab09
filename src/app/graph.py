@@ -5,6 +5,14 @@ from typing import Any
 
 from app.config import Settings
 from app.state import ShoppingState
+from provider import get_chat_model
+from app.data_access import ShoppingDataStore, build_data_tools
+from rag.vector_store import ChromaPolicyStore
+from rag.embeddings import SentenceTransformerEmbeddings
+from langchain_core.tools import tool
+from langgraph.graph import StateGraph, START, END
+import json
+import functools
 
 
 class ShoppingAssistant:
@@ -20,14 +28,33 @@ class ShoppingAssistant:
     def __init__(self, settings: Settings | None = None) -> None:
         self.settings = settings or Settings.load()
 
-        # TODO 1:
-        # - load chat model từ provider tương ứng
-        # - load dataset order/customer
-        # - load vector store cho policy
-        # - build worker tools
-        # - compile LangGraph
+        # Load model
+        self.model = get_chat_model(self.settings)
 
-        self.graph = None
+        # Load dataset & tools
+        data_path = Path("data/order_customer_mock_data.json")
+        self.data_store = ShoppingDataStore(data_path)
+        self.data_tools = build_data_tools(self.data_store)
+
+        # Load RAG
+        persist_dir = Path("src/.chroma")
+        policy_path = Path("data/policy_mock_vi.md")
+        self.embedding_model = SentenceTransformerEmbeddings("all-MiniLM-L6-v2")
+        self.policy_store = ChromaPolicyStore(persist_dir, self.embedding_model)
+        
+        # Build search policy tool
+        @tool
+        def search_policy(query: str) -> str:
+            """Search the store policy using vector search."""
+            hits = self.policy_store.search(query, top_k=3)
+            if not hits:
+                return "No relevant policy found."
+            return "\n\n".join([f"Source: {h['citation']}\n{h['content']}" for h in hits])
+            
+        self.search_policy_tool = search_policy
+        
+        # Compile LangGraph
+        self.graph = build_graph(self.model, self.search_policy_tool, self.data_tools)
 
     def ask(
         self,
@@ -35,12 +62,18 @@ class ShoppingAssistant:
         trace_file: Path | None = None,
         rebuild_index: bool = False,
     ) -> dict[str, Any]:
-        # TODO 2:
-        # - nếu rebuild_index=True thì rebuild Chroma collection
-        # - invoke graph với state ban đầu
-        # - lưu trace ra JSON nếu trace_file được cung cấp
-        # - trả về payload gồm route, policy_result, data_result, final_answer, trace
-        raise NotImplementedError("Student TODO: implement ask()")
+        if rebuild_index:
+            self.policy_store.ensure_index(Path("data/policy_mock_vi.md"))
+            
+        state = {"question": question, "trace": []}
+        final_state = self.graph.invoke(state)
+        
+        if trace_file:
+            trace_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(trace_file, "w", encoding="utf-8") as f:
+                json.dump(final_state.get("trace", []), f, ensure_ascii=False, indent=2)
+                
+        return final_state
 
     def run_batch(
         self,
@@ -48,20 +81,95 @@ class ShoppingAssistant:
         output_dir: Path,
         rebuild_index: bool = False,
     ) -> dict[str, Any]:
-        # TODO 3:
-        # - đọc data/test.json hoặc file test được truyền từ CLI
-        # - chạy từng câu qua ask()
-        # - lưu trace riêng cho từng case
-        # - sinh summary.json
-        raise NotImplementedError("Student TODO: implement run_batch()")
+        if rebuild_index:
+            self.policy_store.ensure_index(Path("data/policy_mock_vi.md"))
+            
+        with open(test_file, "r", encoding="utf-8") as f:
+            cases = json.load(f)
+            
+        summary = {
+            "total": len(cases),
+            "success": 0,
+            "failed": 0,
+            "results": []
+        }
+        
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        for i, case in enumerate(cases):
+            question = case.get("question", "")
+            trace_path = output_dir / f"trace_{i+1:03d}.json"
+            
+            try:
+                state = {"question": question, "trace": []}
+                final_state = self.graph.invoke(state)
+                
+                with open(trace_path, "w", encoding="utf-8") as f:
+                    json.dump(final_state.get("trace", []), f, ensure_ascii=False, indent=2)
+                    
+                summary["success"] += 1
+                summary["results"].append({
+                    "id": i + 1,
+                    "question": question,
+                    "status": "Success",
+                    "route": final_state.get("route", {}).get("status", "unknown"),
+                    "trace_file": str(trace_path.name)
+                })
+            except Exception as e:
+                summary["failed"] += 1
+                summary["results"].append({
+                    "id": i + 1,
+                    "question": question,
+                    "status": "Error",
+                    "error": str(e)
+                })
+                
+        with open(output_dir / "summary.json", "w", encoding="utf-8") as f:
+            json.dump(summary, f, ensure_ascii=False, indent=2)
+            
+        return summary
 
 
-def build_graph() -> Any:
-    # TODO 4:
-    # - định nghĩa StateGraph(ShoppingState)
-    # - add các node: supervisor, worker_1_policy, worker_2_data, worker_3_response
-    # - add conditional edges cho routing
-    raise NotImplementedError("Student TODO: compile the LangGraph workflow")
+def build_graph(model: Any, search_tool: Any, data_tools: list[Any]) -> Any:
+    builder = StateGraph(ShoppingState)
+
+    # Bind tools to nodes
+    bound_supervisor = functools.partial(supervisor_node, model=model)
+    bound_policy = functools.partial(worker_1_policy_node, model=model, search_tool=search_tool)
+    bound_data = functools.partial(worker_2_data_node, model=model, data_tools=data_tools)
+    bound_response = functools.partial(worker_3_response_node, model=model)
+
+    builder.add_node("supervisor", bound_supervisor)
+    builder.add_node("worker_1_policy", bound_policy)
+    builder.add_node("worker_2_data", bound_data)
+    builder.add_node("worker_3_response", bound_response)
+
+    builder.add_edge(START, "supervisor")
+
+    def route_supervisor(state: ShoppingState) -> list[str]:
+        route_info = state.get("route", {})
+        status = route_info.get("status", "")
+        
+        if status == "clarification_needed":
+            return ["worker_3_response"]
+            
+        destinations = []
+        if route_info.get("needs_policy"):
+            destinations.append("worker_1_policy")
+        if route_info.get("needs_data"):
+            destinations.append("worker_2_data")
+            
+        if not destinations:
+            return ["worker_3_response"]
+            
+        return destinations
+
+    builder.add_conditional_edges("supervisor", route_supervisor)
+    builder.add_edge("worker_1_policy", "worker_3_response")
+    builder.add_edge("worker_2_data", "worker_3_response")
+    builder.add_edge("worker_3_response", END)
+
+    return builder.compile()
 
 
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage, ToolMessage

@@ -1,0 +1,36 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng của tôi có được hoàn trả không?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Đơn hàng của tôi có được hoàn trả không?",
+    "output": {
+      "status": "ok",
+      "summary": "Việc đơn hàng có được hoàn trả hay không phụ thuộc vào trạng thái của đơn hàng. Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường. Đơn hàng đang trong quá trình vận chuyển (in_transit) có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không được coi là đã trả hàng. Trạng thái 'delivered' (đã giao) là điều kiện thường dùng để tính cửa sổ đổi trả. Ngay cả khi đơn hàng ở trạng thái 'completed', khách hàng vẫn có thể yêu cầu trả hàng nếu chưa vượt quá thời hạn cho phép (eligible_for_return_until). Tiền hoàn sẽ được trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc tùy theo hạ tầng hỗ trợ.",
+      "facts": [
+        "Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường.",
+        "Đơn hàng đang in_transit có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không xem là đã trả hàng.",
+        "Trạng thái delivered là điều kiện thường dùng để tính cửa sổ đổi trả.",
+        "Đơn hàng completed vẫn có thể còn trong hạn trả hàng nếu chưa vượt eligible_for_return_until.",
+        "Tiền hoàn có thể được trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc."
+      ],
+      "citations": [
+        "5. Chính sách đổi trả và hoàn tiền > 5.10. Quan hệ giữa trạng thái đơn hàng và quyền trả hàng",
+        "5. Chính sách đổi trả và hoàn tiền > 5.9. Hoàn tiền"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng của tôi có được hoàn trả không?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': \"Việc đơn hàng có được hoàn trả hay không phụ thuộc vào trạng thái của đơn hàng. Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường. Đơn hàng đang trong quá trình vận chuyển (in_transit) có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không được coi là đã trả hàng. Trạng thái 'delivered' (đã giao) là điều kiện thường dùng để tính cửa sổ đổi trả. Ngay cả khi đơn hàng ở trạng thái 'completed', khách hàng vẫn có thể yêu cầu trả hàng nếu chưa vượt quá thời hạn cho phép (eligible_for_return_until). Tiền hoàn sẽ được trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc tùy theo hạ tầng hỗ trợ.\", 'facts': ['Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường.', 'Đơn hàng đang in_transit có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không xem là đã trả hàng.', 'Trạng thái delivered là điều kiện thường dùng để tính cửa sổ đổi trả.', 'Đơn hàng completed vẫn có thể còn trong hạn trả hàng nếu chưa vượt eligible_for_return_until.', 'Tiền hoàn có thể được trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc.'], 'citations': ['5. Chính sách đổi trả và hoàn tiền > 5.10. Quan hệ giữa trạng thái đơn hàng và quyền trả hàng', '5. Chính sách đổi trả và hoàn tiền > 5.9. Hoàn tiền']}\n\nData findings: {}\n\n",
+    "output": "Answer: Chào bạn, việc đơn hàng của bạn có được hoàn trả hay không phụ thuộc vào trạng thái hiện tại của đơn hàng. Theo chính sách, đơn hàng cần ở trạng thái 'delivered' (đã giao) hoặc 'completed' (hoàn tất) nhưng chưa vượt quá thời hạn cho phép mới đủ điều kiện để thực hiện quy trình trả hàng. Nếu đơn hàng đang trong quá trình vận chuyển hoặc chưa giao thành công, bạn có thể liên hệ để hỗ trợ hủy hoặc từ chối nhận thay vì làm thủ tục trả hàng. Số tiền hoàn sẽ được chuyển về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc tùy theo hệ thống. Để biết chính xác nhất, bạn vui lòng cung cấp mã đơn hàng cụ thể nhé!\nEvidence:\n- Policy: Việc đơn hàng có được hoàn trả hay không phụ thuộc vào trạng thái của đơn hàng. Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường. Đơn hàng đang trong quá trình vận chuyển (in_transit) có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không được coi là đã trả hàng. Trạng thái 'delivered' (đã giao) là điều kiện thường dùng để tính cửa sổ đổi trả. Ngay cả khi đơn hàng ở trạng thái 'completed', khách hàng vẫn có thể yêu cầu trả hàng nếu chưa vượt quá thời hạn cho phép (eligible_for_return_until). Tiền hoàn sẽ được trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc tùy theo hạ tầng hỗ trợ.\n- Order data: N/A"
+  }
+]

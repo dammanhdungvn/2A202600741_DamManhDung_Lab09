@@ -1,0 +1,17 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Voucher của tôi còn dùng được không?",
+    "output": {
+      "status": "clarification_needed",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": "Vui lòng cung cấp mã voucher hoặc ID khách hàng để tôi kiểm tra."
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Voucher của tôi còn dùng được không?\n\nSupervisor routing: {'status': 'clarification_needed', 'needs_policy': False, 'needs_data': True, 'clarification_question': 'Vui lòng cung cấp mã voucher hoặc ID khách hàng để tôi kiểm tra.'}\n\nPolicy findings: {}\n\nData findings: {}\n\n",
+    "output": "Status: clarification_needed\nQuestion: Vui lòng cung cấp mã voucher hoặc ID khách hàng để tôi kiểm tra."
+  }
+]

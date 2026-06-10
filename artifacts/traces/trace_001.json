@@ -1,0 +1,39 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Chính sách hoàn trả hàng ra sao?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": false,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Chính sách hoàn trả hàng ra sao?",
+    "output": {
+      "status": "ok",
+      "summary": "Chính sách hoàn trả hàng cho phép tiền được hoàn về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc. Thời gian nhận tiền phụ thuộc vào cổng thanh toán, ngân hàng phát hành và quá trình đối soát. Quy trình bao gồm: khách tạo yêu cầu, hệ thống ghi nhận lý do, nhà bán phản hồi, khách chọn hình thức gửi trả, xác nhận trạng thái hàng và cuối cùng là hoàn tiền sau khi chấp thuận. Đơn hàng chưa giao thành công thường chưa thể trả hàng, đơn đang vận chuyển có thể hủy hoặc từ chối nhưng không tính là đã trả, còn đơn đã giao (delivered) mới là thời điểm bắt đầu cửa sổ đổi trả.",
+      "facts": [
+        "Tiền hoàn có thể trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc.",
+        "Thời gian nhận tiền phụ thuộc vào cổng thanh toán, ngân hàng phát hành và việc xác minh chứng từ.",
+        "Quy trình xử lý yêu cầu bao gồm: tạo yêu cầu, ghi nhận lý do, phản hồi từ nhà bán, chọn hình thức gửi trả, xác nhận trạng thái và hoàn tiền.",
+        "Đơn chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường.",
+        "Đơn đang in_transit có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không xem là 'đã trả hàng'.",
+        "Đơn delivered là trạng thái thường dùng để tính cửa sổ đổi trả.",
+        "Đơn completed vẫn có thể còn trong hạn trả hàng nếu chưa vượt eligible_for_return_until."
+      ],
+      "citations": [
+        "5 > 5.9",
+        "5 > 5.10",
+        "5 > 5.5"
+      ]
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Chính sách hoàn trả hàng ra sao?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': False, 'clarification_question': None}\n\nPolicy findings: {'status': 'ok', 'summary': 'Chính sách hoàn trả hàng cho phép tiền được hoàn về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc. Thời gian nhận tiền phụ thuộc vào cổng thanh toán, ngân hàng phát hành và quá trình đối soát. Quy trình bao gồm: khách tạo yêu cầu, hệ thống ghi nhận lý do, nhà bán phản hồi, khách chọn hình thức gửi trả, xác nhận trạng thái hàng và cuối cùng là hoàn tiền sau khi chấp thuận. Đơn hàng chưa giao thành công thường chưa thể trả hàng, đơn đang vận chuyển có thể hủy hoặc từ chối nhưng không tính là đã trả, còn đơn đã giao (delivered) mới là thời điểm bắt đầu cửa sổ đổi trả.', 'facts': ['Tiền hoàn có thể trả về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc.', 'Thời gian nhận tiền phụ thuộc vào cổng thanh toán, ngân hàng phát hành và việc xác minh chứng từ.', 'Quy trình xử lý yêu cầu bao gồm: tạo yêu cầu, ghi nhận lý do, phản hồi từ nhà bán, chọn hình thức gửi trả, xác nhận trạng thái và hoàn tiền.', 'Đơn chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường.', \"Đơn đang in_transit có thể được hỗ trợ hủy hoặc từ chối nhận nhưng không xem là 'đã trả hàng'.\", 'Đơn delivered là trạng thái thường dùng để tính cửa sổ đổi trả.', 'Đơn completed vẫn có thể còn trong hạn trả hàng nếu chưa vượt eligible_for_return_until.'], 'citations': ['5 > 5.9', '5 > 5.10', '5 > 5.5']}\n\nData findings: {}\n\n",
+    "output": "Answer: Chính sách hoàn trả hàng của chúng tôi được thiết kế linh hoạt và minh bạch như sau:\n\n**Hình thức hoàn tiền:** Tiền có thể được hoàn về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc mà bạn đã sử dụng.\n\n**Thời gian nhận tiền:** Thời gian này phụ thuộc vào cổng thanh toán, ngân hàng phát hành và quá trình đối soát chứng từ.\n\n**Quy trình xử lý:**\n1. Khách hàng tạo yêu cầu hoàn trả\n2. Hệ thống ghi nhận lý do\n3. Nhà bán phản hồi\n4. Khách chọn hình thức gửi trả\n5. Xác nhận trạng thái hàng hóa\n6. Hoàn tiền sau khi được chấp thuận\n\n**Lưu ý quan trọng:**\n- Đơn hàng chưa giao thành công thường chưa thể bắt đầu quy trình trả hàng thông thường\n- Đơn đang vận chuyển (in_transit) có thể hủy hoặc từ chối nhận nhưng không tính là \"đã trả hàng\"\n- Thời điểm bắt đầu cửa sổ đổi trả là khi đơn hàng đã được giao thành công (delivered)\n- Đơn completed vẫn có thể còn trong hạn trả hàng nếu chưa vượt quá thời gian cho phép (eligible_for_return_until)\n\nNếu bạn cần hỗ trợ thêm về việc hoàn trả đơn hàng cụ thể, vui lòng cung cấp mã đơn hàng để chúng tôi kiểm tra chi tiết hơn!\n\nEvidence:\n- Policy: Chính sách hoàn trả hàng cho phép tiền được hoàn về ví nội bộ, tài khoản ngân hàng, thẻ thanh toán hoặc phương thức thanh toán gốc. Thời gian nhận tiền phụ thuộc vào cổng thanh toán, ngân hàng phát hành và quá trình đối soát. Quy trình bao gồm: khách tạo yêu cầu, hệ thống ghi nhận lý do, nhà bán phản hồi, khách chọn hình thức gửi trả, xác nhận trạng thái hàng và cuối cùng là hoàn tiền sau khi chấp thuận. Đơn hàng chưa giao thành công thường chưa thể trả hàng, đơn đang vận chuyển có thể hủy hoặc từ chối nhưng không tính là đã trả, còn đơn đã giao (delivered) mới là thời điểm bắt đầu cửa sổ đổi trả.\n- Order data: N/A"
+  }
+]

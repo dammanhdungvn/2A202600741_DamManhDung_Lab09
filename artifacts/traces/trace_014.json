@@ -1,0 +1,45 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Đơn hàng 1971 đang giao thì nên trả hàng hay từ chối nhận?",
+    "output": {
+      "status": "ok",
+      "needs_policy": true,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_1_policy",
+    "input": "Đơn hàng 1971 đang giao thì nên trả hàng hay từ chối nhận?",
+    "output": {
+      "status": "not_found",
+      "summary": "Chính sách hiện tại không có thông tin cụ thể về việc so sánh giữa 'trả hàng' và 'từ chối nhận' đối với đơn hàng đang giao. Tuy nhiên, chính sách quy định rằng khi một đơn hàng được tách thành nhiều kiện, việc hoàn trả có thể phát sinh theo từng kiện hoặc sản phẩm. Để yêu cầu trả hàng hoặc hoàn tiền, khách hàng cần cung cấp đầy đủ bằng chứng như ảnh chụp kiện hàng nguyên tem, video mở kiện (nếu có), và mô tả vấn đề.",
+      "facts": [],
+      "citations": []
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Đơn hàng 1971 đang giao thì nên trả hàng hay từ chối nhận?",
+    "output": {
+      "status": "ok",
+      "summary": "Đơn hàng 1971 đang trong trạng thái vận chuyển. Có thể từ chối nhận khi giao hoặc chờ nhận rồi làm thủ tục trả hàng.",
+      "facts": [
+        "Đơn hàng 1971 có trạng thái 'in_transit' (đang trên đường giao)",
+        "Sản phẩm trong đơn là Giày sneaker StreetGo, thuộc danh mục thời trang",
+        "Sản phẩm có thể trả hàng với thời hạn 15 ngày sau khi nhận",
+        "Hiện tại chưa thể thực hiện trả hàng vì đơn chưa được giao (can_return_now: False)",
+        "Khách hàng đã thanh toán đầy đủ cho đơn hàng này",
+        "Đơn hàng dự kiến sẽ giao vào ngày 2026-06-09"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Đơn hàng 1971 đang giao thì nên trả hàng hay từ chối nhận?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': True, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {'status': 'not_found', 'summary': \"Chính sách hiện tại không có thông tin cụ thể về việc so sánh giữa 'trả hàng' và 'từ chối nhận' đối với đơn hàng đang giao. Tuy nhiên, chính sách quy định rằng khi một đơn hàng được tách thành nhiều kiện, việc hoàn trả có thể phát sinh theo từng kiện hoặc sản phẩm. Để yêu cầu trả hàng hoặc hoàn tiền, khách hàng cần cung cấp đầy đủ bằng chứng như ảnh chụp kiện hàng nguyên tem, video mở kiện (nếu có), và mô tả vấn đề.\", 'facts': [], 'citations': []}\n\nData findings: {'status': 'ok', 'summary': 'Đơn hàng 1971 đang trong trạng thái vận chuyển. Có thể từ chối nhận khi giao hoặc chờ nhận rồi làm thủ tục trả hàng.', 'facts': [\"Đơn hàng 1971 có trạng thái 'in_transit' (đang trên đường giao)\", 'Sản phẩm trong đơn là Giày sneaker StreetGo, thuộc danh mục thời trang', 'Sản phẩm có thể trả hàng với thời hạn 15 ngày sau khi nhận', 'Hiện tại chưa thể thực hiện trả hàng vì đơn chưa được giao (can_return_now: False)', 'Khách hàng đã thanh toán đầy đủ cho đơn hàng này', 'Đơn hàng dự kiến sẽ giao vào ngày 2026-06-09'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Xin chào bạn, đối với đơn hàng 1971 đang trong quá trình vận chuyển, bạn có thể cân nhắc hai phương án tùy theo nhu cầu. Nếu bạn chắc chắn không muốn sản phẩm, bạn có thể từ chối nhận khi giao viên giao đến để đơn hàng bị hủy. Nếu bạn muốn kiểm tra hàng trước, hãy nhận hàng và làm thủ tục trả hàng trong vòng 15 ngày sau khi nhận. Lưu ý hiện tại chưa thể thực hiện trả hàng trực tuyến vì đơn chưa được giao.\nEvidence:\n- Policy: Chính sách hiện tại không có thông tin cụ thể về việc so sánh giữa 'trả hàng' và 'từ chối nhận' đối với đơn hàng đang giao. Tuy nhiên, chính sách quy định rằng khi một đơn hàng được tách thành nhiều kiện, việc hoàn trả có thể phát sinh theo từng kiện hoặc sản phẩm. Để yêu cầu trả hàng hoặc hoàn tiền, khách hàng cần cung cấp đầy đủ bằng chứng như ảnh chụp kiện hàng nguyên tem, video mở kiện (nếu có), và mô tả vấn đề.\n- Order data: Đơn hàng 1971 đang trong trạng thái vận chuyển. Có thể từ chối nhận khi giao hoặc chờ nhận rồi làm thủ tục trả hàng. Sản phẩm là Giày sneaker StreetGo, thuộc danh mục thời trang. Sản phẩm có thể trả hàng với thời hạn 15 ngày sau khi nhận. Hiện tại chưa thể thực hiện trả hàng vì đơn chưa được giao. Khách hàng đã thanh toán đầy đủ cho đơn hàng này. Đơn hàng dự kiến sẽ giao vào ngày 2026-06-09."
+  }
+]

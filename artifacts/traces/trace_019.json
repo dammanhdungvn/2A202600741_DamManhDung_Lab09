@@ -1,0 +1,37 @@
+[
+  {
+    "node": "supervisor",
+    "input": "Customer C014 có những đơn nào gần đây?",
+    "output": {
+      "status": "ok",
+      "needs_policy": false,
+      "needs_data": true,
+      "clarification_question": null
+    }
+  },
+  {
+    "node": "worker_2_data",
+    "input": "Customer C014 có những đơn nào gần đây?",
+    "output": {
+      "status": "ok",
+      "summary": "Customer C014 (Võ Thanh Quân) có 7 đơn hàng gần đây với các trạng thái khác nhau từ đã giao đến đang vận chuyển.",
+      "facts": [
+        "Customer ID: C014, Customer Name: Võ Thanh Quân",
+        "Order 2058: Status delivered, Created 2026-05-29, Total 1,347,000 VND, Items: Tai nghe Bluetooth AirBeat S5, Sạc nhanh 65W NovaCharge",
+        "Order 2230: Status packed, Created 2026-05-09, Total 1,161,409 VND, Item: Giày sneaker StreetGo",
+        "Order 2218: Status packed, Created 2026-04-30, Total 287,214 VND, Item: Bộ hộp đựng thực phẩm LockFresh 10 món",
+        "Order 2212: Status in_transit, Created 2026-03-20, Total 1,441,928 VND, Items: Serum phục hồi da DermaGlow, Mã quà tặng học trực tuyến SkillPass",
+        "Order 1914: Status completed, Created 2026-02-26, Total 303,751 VND, Items: Bình nước thể thao ActiveFlow 1L, Hộp trái cây cắt sẵn FreshBox",
+        "Order 2141: Status delivered, Created 2026-02-21, Total 1,307,285 VND, Items: Sạc nhanh 65W NovaCharge, Sổ tay học tập FocusGrid, Bộ hộp đựng thực phẩm LockFresh 10 món",
+        "Order 2132: Status in_transit, Created 2026-02-08, Total 186,222 VND, Item: Sổ tay học tập FocusGrid"
+      ],
+      "missing_fields": [],
+      "not_found_entities": []
+    }
+  },
+  {
+    "node": "worker_3_response",
+    "input": "Question: Customer C014 có những đơn nào gần đây?\n\nSupervisor routing: {'status': 'ok', 'needs_policy': False, 'needs_data': True, 'clarification_question': None}\n\nPolicy findings: {}\n\nData findings: {'status': 'ok', 'summary': 'Customer C014 (Võ Thanh Quân) có 7 đơn hàng gần đây với các trạng thái khác nhau từ đã giao đến đang vận chuyển.', 'facts': ['Customer ID: C014, Customer Name: Võ Thanh Quân', 'Order 2058: Status delivered, Created 2026-05-29, Total 1,347,000 VND, Items: Tai nghe Bluetooth AirBeat S5, Sạc nhanh 65W NovaCharge', 'Order 2230: Status packed, Created 2026-05-09, Total 1,161,409 VND, Item: Giày sneaker StreetGo', 'Order 2218: Status packed, Created 2026-04-30, Total 287,214 VND, Item: Bộ hộp đựng thực phẩm LockFresh 10 món', 'Order 2212: Status in_transit, Created 2026-03-20, Total 1,441,928 VND, Items: Serum phục hồi da DermaGlow, Mã quà tặng học trực tuyến SkillPass', 'Order 1914: Status completed, Created 2026-02-26, Total 303,751 VND, Items: Bình nước thể thao ActiveFlow 1L, Hộp trái cây cắt sẵn FreshBox', 'Order 2141: Status delivered, Created 2026-02-21, Total 1,307,285 VND, Items: Sạc nhanh 65W NovaCharge, Sổ tay học tập FocusGrid, Bộ hộp đựng thực phẩm LockFresh 10 món', 'Order 2132: Status in_transit, Created 2026-02-08, Total 186,222 VND, Item: Sổ tay học tập FocusGrid'], 'missing_fields': [], 'not_found_entities': []}\n\n",
+    "output": "Answer: Chào bạn! Dưới đây là thông tin về các đơn hàng gần đây của khách hàng C014 (Võ Thanh Quân):\n\n**Tổng cộng có 7 đơn hàng:**\n\n| Mã Đơn | Trạng Thái | Ngày Tạo | Tổng Tiền | Sản Phẩm |\n|--------|------------|----------|-----------|----------|\n| 2058 | Đã giao | 29/05/2026 | 1,347,000 VND | Tai nghe Bluetooth AirBeat S5, Sạc nhanh 65W NovaCharge |\n| 2230 | Đóng gói | 09/05/2026 | 1,161,409 VND | Giày sneaker StreetGo |\n| 2218 | Đóng gói | 30/04/2026 | 287,214 VND | Bộ hộp đựng thực phẩm LockFresh 10 món |\n| 2212 | Đang vận chuyển | 20/03/2026 | 1,441,928 VND | Serum phục hồi da DermaGlow, Mã quà tặng học trực tuyến SkillPass |\n| 1914 | Hoàn thành | 26/02/2026 | 303,751 VND | Bình nước thể thao ActiveFlow 1L, Hộp trái cây cắt sẵn FreshBox |\n| 2141 | Đã giao | 21/02/2026 | 1,307,285 VND | Sạc nhanh 65W NovaCharge, Sổ tay học tập FocusGrid, Bộ hộp đựng thực phẩm LockFresh 10 món |\n| 2132 | Đang vận chuyển | 08/02/2026 | 186,222 VND | Sổ tay học tập FocusGrid |\n\nNếu bạn cần thêm thông tin chi tiết về đơn hàng nào cụ thể, hãy cho mình biết nhé!\n\nEvidence:\n- Policy: N/A\n- Order data: Customer C014 (Võ Thanh Quân) có 7 đơn hàng gần đây với các trạng thái khác nhau từ đã giao đến đang vận chuyển."
+  }
+]

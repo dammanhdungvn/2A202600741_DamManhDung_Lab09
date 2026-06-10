@@ -1,0 +1,161 @@
+{
+  "total": 22,
+  "success": 22,
+  "failed": 0,
+  "results": [
+    {
+      "id": 1,
+      "question": "Chính sách hoàn trả hàng ra sao?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_001.json"
+    },
+    {
+      "id": 2,
+      "question": "Giao hàng tiêu chuẩn thường mất bao lâu?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_002.json"
+    },
+    {
+      "id": 3,
+      "question": "Khách có được kiểm hàng khi nhận không?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_003.json"
+    },
+    {
+      "id": 4,
+      "question": "Voucher có được hoàn lại khi hủy đơn không?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_004.json"
+    },
+    {
+      "id": 5,
+      "question": "Các trường hợp nào thường không hỗ trợ trả hàng?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_005.json"
+    },
+    {
+      "id": 6,
+      "question": "Đơn hàng 1971 bao giờ được giao?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_006.json"
+    },
+    {
+      "id": 7,
+      "question": "Cho tôi xem danh sách đơn hàng của khách hàng C001",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_007.json"
+    },
+    {
+      "id": 8,
+      "question": "Voucher của khách hàng C001 còn những mã nào dùng được?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_008.json"
+    },
+    {
+      "id": 9,
+      "question": "Khách hàng C001 thuộc hạng gì và còn quota voucher bao nhiêu?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_009.json"
+    },
+    {
+      "id": 10,
+      "question": "Đơn hàng 2058 đang ở trạng thái nào?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_010.json"
+    },
+    {
+      "id": 11,
+      "question": "Đơn hàng 1971 có được hoàn trả không?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_011.json"
+    },
+    {
+      "id": 12,
+      "question": "Đơn hàng 2058 còn trong thời gian trả hàng không?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_012.json"
+    },
+    {
+      "id": 13,
+      "question": "Đơn hàng 2058 nếu khách đổi ý thì có thể trả trong bao lâu?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_013.json"
+    },
+    {
+      "id": 14,
+      "question": "Đơn hàng 1971 đang giao thì nên trả hàng hay từ chối nhận?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_014.json"
+    },
+    {
+      "id": 15,
+      "question": "Voucher của tôi còn dùng được không?",
+      "status": "Success",
+      "route": "clarification_needed",
+      "trace_file": "trace_015.json"
+    },
+    {
+      "id": 16,
+      "question": "Đơn hàng của tôi có được hoàn trả không?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_016.json"
+    },
+    {
+      "id": 17,
+      "question": "Kiểm tra đơn hàng 9999 giúp tôi",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_017.json"
+    },
+    {
+      "id": 18,
+      "question": "Cho tôi xem voucher của khách hàng C999",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_018.json"
+    },
+    {
+      "id": 19,
+      "question": "Customer C014 có những đơn nào gần đây?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_019.json"
+    },
+    {
+      "id": 20,
+      "question": "Phương thức giao nhanh có thể bị chuyển sang giao tiêu chuẩn khi nào?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_020.json"
+    },
+    {
+      "id": 21,
+      "question": "Khách hàng C001 tối đa dùng bao nhiêu voucher mỗi tháng?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_021.json"
+    },
+    {
+      "id": 22,
+      "question": "Đơn hàng 2058 có liên quan gì đến cửa sổ trả hàng 15 ngày trong policy không?",
+      "status": "Success",
+      "route": "ok",
+      "trace_file": "trace_022.json"
+    }
+  ]
+}
